@@ -1,7 +1,3 @@
-
-'*****
-'*Calcular fechas dias retiro
-'****
 Function CalcularFechasDiasRetiro(fecha_ingreso As Date, fecha_retiro As Date, fecha_ultimo_pago As Date)
     
     Dim fecha_ingreso_texto As String
@@ -11,8 +7,10 @@ Function CalcularFechasDiasRetiro(fecha_ingreso As Date, fecha_retiro As Date, f
     Dim cantidad_dias_ultimo_pago As Integer
     Dim anio As Integer
     
-    fecha_ultimo_pago_texto = "1/" & Month(fecha_ultimo_pago) + 1 & "/" & Year(fecha_ultimo_pago)
-    fecha_ultimo_pago_organizada = DateAdd("d", -1, DateValue(fecha_ultimo_pago_texto))
+    fecha_ultimo_pago_texto = "1/" & Month(fecha_ultimo_pago) & "/" & Year(fecha_ultimo_pago)
+    fecha_ultimo_pago_organizada = DateValue(fecha_ultimo_pago_texto)
+    fecha_ultimo_pago_organizada = DateAdd("m", 1, fecha_ultimo_pago_organizada)
+    fecha_ultimo_pago_organizada = DateAdd("d", -1, fecha_ultimo_pago_organizada)
     If (Day(fecha_ultimo_pago_organizada) = 31) Then
         fecha_ultimo_pago_organizada = DateAdd("d", -1, fecha_ultimo_pago_organizada)
     End If
@@ -45,4 +43,3 @@ Function CalcularFechasDiasRetiro(fecha_ingreso As Date, fecha_retiro As Date, f
     CalcularFechasDiasRetiro = cantidad_dias_ultimo_pago
     
 End Function
-
